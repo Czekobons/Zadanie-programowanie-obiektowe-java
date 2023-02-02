@@ -29,4 +29,7 @@ public class Animal {
             System.out.println("You are crazy, I'm already dead!");
         }
     }
+    public String toString() {
+        return species+" weight "+weight+".";
+    }
 }

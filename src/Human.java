@@ -1,3 +1,5 @@
+import devices.Car;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -59,5 +61,8 @@ public class Human {
         else {
             System.out.println("You have to sigin in to univeristy and find new job or get a rise if you want to buy this car.");
         }
+    }
+    public String toString() {
+        return firstName+" "+lastName+", Year of Birth: "+yearOfBirth+", Salary: "+salary;
     }
 }

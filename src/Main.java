@@ -1,3 +1,5 @@
+import devices.Car;
+
 public class Main {
     public static void main(String[] args) {
         Animal dog = new Animal("Terrier", 5.0);
@@ -19,5 +21,11 @@ public class Main {
         me.setSalary(2000.0);
         me.setSalary(3000.0);
         me.getSalaryInfo();
+        Car tesla3 = new Car("Tesla", "Model S", 2007, 50000.0);
+        System.out.println(tesla2.equals(tesla3));
+        System.out.println(dog);
+        System.out.println(tesla2+", "+tesla3);
+
+
     }
 }
