@@ -9,7 +9,13 @@ public class Main {
         dog.takeForWalk();
 
         Car tesla = new Car("Tesla", "Model 3", 2018);
-        Human me = new Human("Patryk", "Nowak", 1980);
+        Human me = new Human("Patryk", "Nowak", 1980, 4000.0);
         me.car = new Car("Tesla", "Model S", 2007);
+
+        me.getSalaryInfo();
+        me.getSalaryInfo();
+        me.setSalary(2000.0);
+        me.setSalary(3000.0);
+        me.getSalaryInfo();
     }
 }
