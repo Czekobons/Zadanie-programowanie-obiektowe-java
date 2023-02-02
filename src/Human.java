@@ -9,8 +9,8 @@ public class Human {
     final Integer yearOfBirth;
     public Double weight;
     public Animal pet;
-    public Car car;
     private Date salaryCheckDate;
+    private Car car;
 
     public Human(String firstName, String lastName, int yearOfBirth, Double salary) {
         this.firstName = firstName;
@@ -43,5 +43,21 @@ public class Human {
         System.out.println("You need to take your annex to contract from Hania from HR as soon as possible.");
         System.out.println("Be aware that ZUS and US already know about your new salary, so please don't try to hide it.");
         this.salary = salary;
+    }
+    public Car getCar() {
+        return car;
+    }
+    public void setCar(Car car) {
+        if(salary > car.value) {
+            System.out.println("Congratulation, you bought car with cash.");
+            this.car = car;
+        }
+        else if(car.value/12 < salary) {
+            System.out.println("You bought your car but you will have to pay your debt.");
+            this.car = car;
+        }
+        else {
+            System.out.println("You have to sigin in to univeristy and find new job or get a rise if you want to buy this car.");
+        }
     }
 }

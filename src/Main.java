@@ -8,9 +8,11 @@ public class Main {
         dog.feed();
         dog.takeForWalk();
 
-        Car tesla = new Car("Tesla", "Model 3", 2018);
-        Human me = new Human("Patryk", "Nowak", 1980, 4000.0);
-        me.car = new Car("Tesla", "Model S", 2007);
+        Car tesla = new Car("Tesla", "Model 3", 2018, 100000.0);
+        Human me = new Human("Patryk", "Nowak", 1980, 20000.0);
+        Car tesla2 = new Car("Tesla", "Model S", 2007, 50000.0);
+        me.setCar(tesla2);
+        me.getCar();
 
         me.getSalaryInfo();
         me.getSalaryInfo();
