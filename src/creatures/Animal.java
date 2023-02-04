@@ -1,4 +1,8 @@
-public class Animal {
+package creatures;
+
+import other.Sellable;
+
+public class Animal implements Sellable {
     final String species;
     private Double weight;
 
@@ -31,5 +35,10 @@ public class Animal {
     }
     public String toString() {
         return species+" weight "+weight+".";
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+
     }
 }

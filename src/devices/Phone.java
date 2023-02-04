@@ -1,5 +1,7 @@
 package devices;
 
+import creatures.Human;
+
 public class Phone extends Device{
 
     public double screenSize;

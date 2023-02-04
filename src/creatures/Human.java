@@ -1,4 +1,7 @@
+package creatures;
+
 import devices.Car;
+import devices.Device;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -6,8 +9,10 @@ import java.util.Date;
 public class Human {
     final String firstName;
     final String lastName;
+    public Device device;
     private Double salary;
     private Double lastSalary;
+    public Double cash;
     final Integer yearOfBirth;
     public Double weight;
     public Animal pet;
@@ -47,7 +52,10 @@ public class Human {
         this.salary = salary;
     }
     public Car getCar() {
-        return car;
+        if(car != null) {
+            return car;
+        }
+        return null;
     }
     public void setCar(Car car) {
         if(salary > car.value) {
@@ -58,11 +66,21 @@ public class Human {
             System.out.println("You bought your car but you will have to pay your debt.");
             this.car = car;
         }
+        else if(car == null) {
+            car = null;
+        }
         else {
             System.out.println("You have to sigin in to univeristy and find new job or get a rise if you want to buy this car.");
         }
     }
     public String toString() {
         return firstName+" "+lastName+", Year of Birth: "+yearOfBirth+", Salary: "+salary;
+    }
+
+    public Double getCash() {
+        return cash;
+    }
+    public void addCash(double amount) {
+        cash+=amount;
     }
 }
