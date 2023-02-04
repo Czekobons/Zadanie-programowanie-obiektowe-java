@@ -1,4 +1,6 @@
 import devices.Car;
+import devices.Device;
+import devices.Phone;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,6 +27,10 @@ public class Main {
         System.out.println(tesla2.equals(tesla3));
         System.out.println(dog);
         System.out.println(tesla2+", "+tesla3);
+
+        Phone onePlus = new Phone("OnePlus", " 7PRO", 2020);
+        onePlus.turnOn();
+        me.getCar().turnOn();
 
 
     }
