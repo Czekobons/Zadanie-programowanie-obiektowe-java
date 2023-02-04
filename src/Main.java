@@ -1,12 +1,14 @@
 import creatures.Animal;
+import creatures.FarmAnimal;
 import creatures.Human;
+import creatures.Pet;
 import devices.Car;
 import devices.Device;
 import devices.Phone;
 
 public class Main {
     public static void main(String[] args) {
-        Animal dog = new Animal("Terrier", 5.0);
+        Animal dog = new Pet("Terrier", 5.0);
         dog.feed();
         for(int i=0;i<4;i++) {
             dog.takeForWalk();

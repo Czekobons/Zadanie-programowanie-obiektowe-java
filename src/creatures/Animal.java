@@ -1,23 +1,28 @@
 package creatures;
 
+import other.Feedable;
 import other.Sellable;
 
-public class Animal implements Sellable {
+public abstract class Animal implements Sellable, Feedable {
     final String species;
     private Double weight;
+    final public Integer DEFAULT_FOOD_WEIGHT = 2;
 
     public Animal(String species, Double weight) {
         this.species = species;
         this.weight = weight;
     }
-    public void feed() {
+    public void feed(int foodWeight) {
         if(weight > 0) {
-            weight+=2;
+            weight+=foodWeight;
             System.out.println("Thanks for food.");
         }
         else {
             System.out.println("Good job that you remember about it but it is a little bit too late.");
         }
+    }
+    public void feed() {
+        feed(DEFAULT_FOOD_WEIGHT);
     }
     public void takeForWalk() {
         if(weight > 2) {
