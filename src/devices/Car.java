@@ -2,16 +2,31 @@ package devices;
 
 import creatures.Human;
 
-public class Car extends Device{
+public abstract class Car extends Device{
     public Double value;
     public String color;
     public Double power;
+    public Double maxRange;
+    public Double range;
 
-    public Car(String producer, String model, Integer yearOfProduction, Double value)
+    public Car(String producer, String model, Integer yearOfProduction, Double value, Double maxRange)
     {
         super(producer, model, yearOfProduction);
         this.value = value;
+        this.maxRange = maxRange;
     }
+    public void driveCar(Double distance) {
+        if (distance > range) {
+            System.out.println("Refuel your car if you want to make this trip.");
+            System.out.println("Range left " + range + " km.");
+
+        } else {
+            range -= distance;
+            System.out.println("It was nice trip.");
+            System.out.println("Range left " + range + " km.");
+        }
+    }
+    public abstract void refuel();
 
     @Override
     public void turnOn() {

@@ -2,9 +2,7 @@ import creatures.Animal;
 import creatures.FarmAnimal;
 import creatures.Human;
 import creatures.Pet;
-import devices.Car;
-import devices.Device;
-import devices.Phone;
+import devices.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,11 +14,12 @@ public class Main {
         dog.feed();
         dog.takeForWalk();
 
-        Car tesla = new Car("Tesla", "Model 3", 2018, 100000.0);
+        Car bmw = new Diesel("BMW", "X4", 2018, 100000.0, 600.0);
+        Car bmw2 = new Diesel("BMW", "X4", 2018, 100000.0, 600.0);
         Human me = new Human("Patryk", "Nowak", 1980, 20000.0);
         Human elon = new Human("Elon", "Musk", 1970, 1000000000.0);
-        Car tesla2 = new Car("Tesla", "Model S", 2007, 50000.0);
-        me.setCar(tesla2);
+        Car fiat = new LPG("Fiat", "125p", 2007, 50000.0, 500.0);
+        me.setCar(bmw);
         me.getCar();
 
         me.getSalaryInfo();
@@ -28,10 +27,10 @@ public class Main {
         me.setSalary(2000.0);
         me.setSalary(3000.0);
         me.getSalaryInfo();
-        Car tesla3 = new Car("Tesla", "Model S", 2007, 50000.0);
-        System.out.println(tesla2.equals(tesla3));
+        Car tesla3 = new Electric("Tesla", "Model S", 2007, 50000.0, 450.0);
+        System.out.println(bmw.equals(bmw2));
         System.out.println(dog);
-        System.out.println(tesla2+", "+tesla3);
+        System.out.println(bmw+", "+bmw2);
 
         Phone onePlus = new Phone("OnePlus", " 7PRO", 2020);
         onePlus.turnOn();
@@ -52,6 +51,9 @@ public class Main {
         System.out.println("This is elon device: "+elon.device);
         me.getCar().sell(me, elon, me.getCar().value);
         System.out.println(elon.getCar());
+        onePlus.installAnApp("https://unsplash.com/photos/aqM730y624E/download?force=true");
+        me.getCar().driveCar(200.0);
+        me.getCar().refuel();
 
 
     }
