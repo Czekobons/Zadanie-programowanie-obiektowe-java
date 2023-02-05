@@ -3,7 +3,7 @@ package devices;
 import creatures.Human;
 
 public abstract class Car extends Device{
-    public Double value;
+
     public String color;
     public Double power;
     public Double maxRange;
@@ -11,8 +11,7 @@ public abstract class Car extends Device{
 
     public Car(String producer, String model, Integer yearOfProduction, Double value, Double maxRange)
     {
-        super(producer, model, yearOfProduction);
-        this.value = value;
+        super(producer, model, yearOfProduction, value);
         this.maxRange = maxRange;
     }
     public void driveCar(Double distance) {
@@ -40,25 +39,22 @@ public abstract class Car extends Device{
     }
 
     @Override
-    public void sell(Human seller, Human buyer, Double price) {
-        if(seller.getCar() != this) {
-            System.out.println("You can't sell car that you not own.");
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
+        if (!seller.hasACar(this)) {
+            throw new Exception("Sprzedawca nie ma auta");
         }
-        else if(buyer.getCash() < price) {
-            System.out.println("You don't have enough money to complete this transaction!");
-
+        if (!buyer.hasFreeSpace()) {
+            throw new Exception("You can't sell car that you not own.");
         }
-        else if(seller.equals(buyer)) {
-            System.out.println("This transaction must be beetwen 2 diffrent persons.");
+        if (buyer.cash < price) {
+            throw new Exception("You don't have enough money to complete this transaction!");
         }
-        else {
-            System.out.println("Transaction started...");
-            buyer.addCash(-price);
-            System.out.println("Transfering money...");
-            seller.addCash(price);
-            buyer.setCar(this);
-            //seller.setCar(null);
-            System.out.println("Transaction completed.");
-        }
+        System.out.println("Transaction started...");
+        buyer.addCar(this);
+        seller.removeCar(this);
+        buyer.cash -= price;
+        System.out.println("Transfering money...");
+        seller.cash += price;
+        System.out.println("Transaction completed.");
     }
 }

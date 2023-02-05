@@ -9,10 +9,13 @@ public abstract class Device implements Sellable {
     public final Integer yearOfProduction;
     public boolean isOn;
 
-    protected Device(String producer, String model, Integer yearOfProduction) {
+    public Double value;
+
+    protected Device(String producer, String model, Integer yearOfProduction, Double value) {
         this.producer = producer;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
+        this.value = value;
     }
     abstract void turnOn();
 
@@ -21,7 +24,7 @@ public abstract class Device implements Sellable {
     }
 
     @Override
-    public void sell(Human seller, Human buyer, Double price) {
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
         if(seller.device != this) {
             System.out.println("You can't sell device that you not own.");
         }

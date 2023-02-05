@@ -13,8 +13,8 @@ public class Phone extends Device{
     public double screenSize;
     public Integer storage;
 
-    public Phone(String producer, String model, Integer yearOfProduction) {
-        super(producer, model, yearOfProduction);
+    public Phone(String producer, String model, Integer yearOfProduction, Double value) {
+        super(producer, model, yearOfProduction, value);
     }
 
     @Override
