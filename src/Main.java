@@ -22,7 +22,9 @@ public class Main {
 
         Human me = new Human("Patryk", "Nowak", 1980, 20000.0);
         Human elon = new Human("Elon", "Musk", 1970, 1000000000.0);
+        Human you = new Human("Piotr", "Lanc", 2000, 0.0);
 
+        you.cash  = 20000000.0;
         me.cash = 3000000.0;
         me.setCar(bmw, 0);
         me.getCar(0);
@@ -67,5 +69,10 @@ public class Main {
         me.setCar(kia, 3);
         me.sortCarsByYear();
         System.out.println(me.garageSort);
+        elon.getCar(0).sell(elon, you, elon.getCar(0).value);
+
+        tesla3.numberOfTrans();
+        System.out.println(tesla3.checkTransactionBetween(me, elon));
+        System.out.println(tesla3.checkTransactionBetween(elon, me));
     }
 }

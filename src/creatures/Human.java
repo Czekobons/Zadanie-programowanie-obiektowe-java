@@ -102,10 +102,12 @@ public class Human {
             System.out.println("Congratulation. You bought your car with cash.");
             car = car;
             this.garage[parkPlace] = car;
+            car.owners.add(this);
         } else if (car.value / 12 < salary) {
             System.out.println("You bought your car but you will have to pay your debt.");
             car = car;
             this.garage[parkPlace] = car;
+            car.owners.add(this);
         } else {
             System.out.println("You have to sigin in to univeristy and find new job or get a rise if you want to buy this car.");
         }

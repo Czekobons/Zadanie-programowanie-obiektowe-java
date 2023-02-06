@@ -2,12 +2,19 @@ package devices;
 
 import creatures.Human;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 public abstract class Car extends Device{
 
     public String color;
     public Double power;
     public Double maxRange;
     public Double range;
+    public List<Human> owners = new ArrayList<>();
+    public List<Transactions> carTransactions = new ArrayList<>();
 
     public Car(String producer, String model, Integer yearOfProduction, Double value, Double maxRange)
     {
@@ -33,6 +40,25 @@ public abstract class Car extends Device{
         System.out.println("Enigine is running now.");
         isOn = true;
     }
+    public Boolean hadOwner() {
+        if(owners.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+    public Boolean checkTransactionBetween(Human seller, Human buyer) {
+        for (Transactions transactions:carTransactions) {
+            if(transactions != null) {
+                if(transactions.seller.equals(seller) &&transactions.buyer.equals(buyer)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public void numberOfTrans() {
+        System.out.println("This car was on sell this many times: "+carTransactions.size());
+    }
 
     public String toString() {
         return producer+" "+model+", Produced in: "+yearOfProduction+" cost "+value;
@@ -49,12 +75,19 @@ public abstract class Car extends Device{
         if (buyer.cash < price) {
             throw new Exception("You don't have enough money to complete this transaction!");
         }
+        if(!seller.equals(owners.get(owners.size() - 1))) {
+            throw new Exception("Seller is not last owner of the car, this car is stolen!");
+        }
         System.out.println("Transaction started...");
         buyer.addCar(this);
         seller.removeCar(this);
+        owners.add(buyer);
         buyer.cash -= price;
         System.out.println("Transfering money...");
         seller.cash += price;
         System.out.println("Transaction completed.");
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        carTransactions.add(new Transactions(buyer, seller, price,date));
     }
 }
