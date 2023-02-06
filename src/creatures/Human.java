@@ -6,8 +6,8 @@ import devices.Device;
 import java.util.*;
 
 public class Human {
-    final String firstName;
-    final String lastName;
+    public final String firstName;
+    public final String lastName;
     public Device device;
     private Double salary;
     private Double lastSalary;

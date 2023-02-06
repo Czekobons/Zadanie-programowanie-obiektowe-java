@@ -4,6 +4,9 @@ import creatures.Human;
 import creatures.Pet;
 import devices.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         Animal dog = new Pet("Terrier", 5.0);
@@ -23,6 +26,16 @@ public class Main {
         Human me = new Human("Patryk", "Nowak", 1980, 20000.0);
         Human elon = new Human("Elon", "Musk", 1970, 1000000000.0);
         Human you = new Human("Piotr", "Lanc", 2000, 0.0);
+
+        List<Application> avaiableApps = new ArrayList<>();
+        Application appleMusic =  new Application("AppleMusic", 10.1, 45.0);
+        Application cutTheRope =  new Application("CutTheRope", 2.3, 100.0);
+        Application productivity =  new Application("Productivity", 1.1, 14.0);
+        Application wallpapers =  new Application("Wallpapers", 3.6, 22.0);
+        Application spaceGame =  new Application("SpaceGame", 12.3, 87.0);
+        Application googleLens = new Application("GoogleLens");
+        Application googleMaps = new Application("GoogleMaaps");
+        Application freeGame = new Application("FreeGame");
 
         you.cash  = 20000000.0;
         me.cash = 3000000.0;
@@ -74,5 +87,19 @@ public class Main {
         tesla3.numberOfTrans();
         System.out.println(tesla3.checkTransactionBetween(me, elon));
         System.out.println(tesla3.checkTransactionBetween(elon, me));
+
+        onePlus.installPhoneApp(me, cutTheRope);
+        onePlus.isInstalled("CutTheRope");
+        onePlus.isInstalled("googleMaps");
+        onePlus.installPhoneApp(me, googleLens);
+        onePlus.installPhoneApp(me, wallpapers);
+        onePlus.showFreeApps();
+
+        System.out.println("Your apps are worth: "+onePlus.valueOfAllApps());
+        onePlus.installPhoneApp(me, appleMusic);
+        onePlus.installPhoneApp(me, spaceGame);
+        System.out.println("Your apps are worth: "+onePlus.valueOfAllApps());
+        onePlus.installedAppsAlphabet();
+        onePlus.installedAppsPrice();
     }
 }
